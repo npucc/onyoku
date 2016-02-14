@@ -1,0 +1,9 @@
+<?php
+$result['results'] = 3;
+$result['condition'] = array(
+	array('name' => '特になし'),
+	array('name' => '傷あり'),
+	array('name' => '破損')
+);
+echo json_encode($result)
+?>

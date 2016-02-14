@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>音浴博物館</title>
+<link rel = "stylesheet" href = "base.css" type = text/css>
+<link rel = "stylesheet" href = "search.css" type = text/css>
+</head>
+<body>
+<div class = "base">
+<div class = "header">
+	<div class = "logo">
+		<a href = "index.html"><img src = "img/logo.png" alt="おんよくはくぶつかん"><img src = "img/maple_leaf.png"></a>
+	</div>
+	<ul class = "menu">
+		<li><a href="index.html"><img src = "img/menu_2.bmp" alt = "施設案内"></img></a></li>
+		<li><a href="record_search.html"><img src = "img/menu_3.bmp" alt = "レコード検索"></img></a></li>
+		<li><a href="index.html"><img src = "img/menu_4.bmp" alt = "思い出ノート"></img></a></li>
+		<li><a href="index.html"><img src = "img/menu_5.bmp" alt = "ギャラリー"></img></a></li>
+		<li><a href="index.html"><img src = "img/menu_6.bmp" alt = "エッセイ"></img></a></li>
+		<li><a href="index.html"><img src = "img/menu_7.bmp" alt = "リンク集"></img></a></li>
+		<li><a href="index.html"><img src = "img/menu_8.bmp" alt = "お問い合わせ"></img></a></li>
+	</ul>
+</div>
+<div class = "contents">
+<form method = "POST" action="search.php">
+	<input type = "text" name = "name">
+	<select name = "matching">
+		<option value = "prefix">前方一致</option>
+		<option value = "partial">部分一致</option>
+		<option value = "suffix">後方一致</option>
+		<option value = "complete">完全一致</option>
+	</select><br>
+	<input type = "radio" name = "mode" value = "artist" checked>アーティスト名
+	<input type = "radio" name = "mode" value = "album">アルバム名
+	<input type = "radio" name = "mode" value = "music">曲名
+	<br>
+	<input type = "submit" value = "検索">
+</form>
+</div>
+
+<div class = "footer">
+	<p>Copyright(C) 2008 長崎県立大学コンピュータサークル</p>
+</div>
+
+</div>
+</body>
+</html>

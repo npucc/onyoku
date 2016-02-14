@@ -1,0 +1,46 @@
+<?php
+
+class OnyokuDBResult {
+	private $result;
+
+	public function __construct($src) {
+		$this->result = $src;
+	}
+	public function fetchArray($i = 0) {
+		return pg_fetch_array($this->result, $i);
+	}
+	public function numRows() {
+		return pg_num_rows($this->result);
+	}
+}
+class OnyokuDB {
+	const DBN = 'host=localhost user=onyoku dbname=onyoku';
+	private $connection;
+
+	 /* singleton（にする意味があるかは微妙だが！） */
+	private static $instance;
+	private function __construct() {
+		if (!($connection = pg_connect(self::DBN)))
+			throw new Exception("DBへの接続に失敗");
+		
+		$this->connection = $connection;
+	}
+	public static function getInstance() {
+		if (!isset(self::$instance)) {
+			self::$instance = new OnyokuDB();
+		}
+		return self::$instance;
+	}
+	public function __destruct() {
+		pg_close($this->connection);
+	}
+
+	public function query($sql, $params) {
+		if (!($pgresult = pg_query_params($this->connection, $sql, $params))) {
+			throw new Exception("DBへの問い合わせに失敗");
+		}
+		$result = new OnyokuDBResult($pgresult);
+		return $result;
+	}
+}
+?>

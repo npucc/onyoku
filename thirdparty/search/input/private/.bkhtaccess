@@ -1,0 +1,10 @@
+AuthUserFile /home/onyoku/.htpasswd_igarashi
+AuthGroupFile /dev/null
+AuthName "Private Area"
+AuthType Basic
+
+require valid-user
+
+<Files ~"^.(htpasswd|htaccess)$">
+	deny from all
+</Files>

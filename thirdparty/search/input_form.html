@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C/DTD HTML 4.01 Trasitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<title>hogehoge</title>
+<link rel="stylesheet" href="resource/css/ext-all.css" type="text/css" media="all">
+<link rel="stylesheet" href="resource/css/main.css" type="text/css" meda="all">
+<script type="text/javascript" src="js/ext-base.js"></script>
+<script type="text/javascript" src="js/ext-all.js"></script>
+<script type="text/javascript"><!--
+Ext.EventManager.on(window, "load", function(){
+var disc_type_store = new Ext.data.Store({
+url: 'get_disc_type.php',
+reader: new Ext.data.JsonReader(
+{root: 'disc_types', totalProperty: 'results'},
+[
+	{name: 'name', type: 'string', mapping: 'disc_type.name'},
+)
+});
+var combo = new Ext.form.ComboBox({
+store: disc_type_store,
+applyTo: "disc_type",
+displayField: "name",
+triggerAction: "all",
+emptyText: "ディスクタイプを指定してください"
+});
+</head>
+<body>
+<form action="input.php" method="post">
+	ディスク名<input type="text" name = "disc_title">
+	サブタイトル<input type="text" name = "disc_subtitle">
+	ディスクタイプ<input type="text" id="disc_type" name = "disc_type">
+</form>
+</body>
+</html> 
